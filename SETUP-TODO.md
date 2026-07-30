@@ -42,11 +42,14 @@ are the highest-impact items on this list.
       empty right now and the site cleanly omits it everywhere. Once Dylan
       has an inbox he wants public (even a Gmail), set it and it appears in
       the footer, contact page, legal pages, and schema.
-- [ ] **Confirm pricing ballparks with Dylan.** Service pages and FAQs quote
-      typical Gulf Coast market ranges (house wash $250–$400 single-story,
-      driveway $100–$200, roof $350–$600, etc. in `src/content/services.ts`).
-      Make sure Dylan is comfortable quoting in those ranges — adjust to his
-      real pricing if not.
+- [ ] **Confirm the pricing envelope with Dylan.** Exactly ONE place on the
+      site quotes numbers: the homepage FAQ, which says most jobs start
+      around $200 and run to $1,000+ depending on size and complexity
+      (`src/app/page.tsx`). Every service-page FAQ deliberately avoids hard
+      figures and instead explains what drives that service's price, so
+      Dylan is never boxed into a number and nothing goes stale. Keep it
+      that way — if you add a figure anywhere, make sure it sits inside the
+      $200–$1,000+ envelope, or the pages will contradict each other.
 
 ## High-impact now (real business = real levers)
 

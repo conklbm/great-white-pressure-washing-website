@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const homeFaqs = [
   {
     q: "What does pressure washing cost around Mobile?",
-    a: "Every job gets a free estimate, and typical ballparks in our area: a single-story house wash lands around $250–$400, a standard driveway around $100–$200, and a shingle roof around $350–$600. Combining surfaces in one visit brings the total down, and you approve the price before we start.",
+    a: "Most jobs start around $200 and run to $1,000 or more, depending on the size of the property and how complicated the work is. A small driveway sits near the bottom; a big two-story house with the roof, gutters, and concrete all done in one visit sits at the top. Every job gets a free estimate and a written price you approve before we start.",
   },
   {
     q: "Can I text you instead of calling?",

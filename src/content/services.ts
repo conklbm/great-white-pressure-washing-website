@@ -75,7 +75,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What does a house wash cost around Mobile?",
-        a: "For a one-story home, most jobs in the area land between $250 and $400. Two stories usually fall in the $400–$650 range. Size, siding, and buildup all move the number, so we confirm an exact written quote before any work starts.",
+        a: "Square footage, siding type, how many stories, and how heavy the growth has gotten all move the number. A modest one-story home sits near the bottom of our range; a large two-story with years of buildup sits well above it. We confirm an exact written quote before any work starts.",
       },
       {
         q: "What's the difference between soft washing and pressure washing?",
@@ -136,7 +136,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What do roof cleanings run in the Mobile area?",
-        a: "A typical one-story shingle roof around here falls somewhere in the $350–$600 range. Steeper pitches, second stories, and heavy moss push it up. We put the exact number in writing before we set up.",
+        a: "Roofs sit toward the higher end of our pricing, because of the size of the surface and the care and access the work takes. Pitch, height, and how much moss and streaking has built up set the final number. We put it in writing before we set up.",
       },
       {
         q: "Why can't I just pressure wash the roof?",
@@ -191,7 +191,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What's a typical driveway cleaning price?",
-        a: "In our market, a two-car driveway generally falls between $100 and $200. Add walkways or a patio to the same visit and the combined rate drops. The exact quote goes in writing before we start.",
+        a: "Flatwork is priced by the square foot, so a standard two-car driveway is one of the more affordable jobs we do, while a long drive with walkways and a patio runs higher. Putting all your concrete in one visit lowers the combined rate. The exact quote goes in writing before we start.",
       },
       {
         q: "How long does concrete stay clean here?",
@@ -252,7 +252,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What does deck or fence cleaning cost?",
-        a: "Most decks in the area come in between $150 and $350 depending on size and condition. Fences are priced by the linear foot. Either way, you'll have a written number before we touch anything.",
+        a: "Decks are priced by size, fences by the linear foot. Condition matters as much as size here — wood that has gone gray and mildewed takes longer than a deck that gets cleaned every season. Either way, you'll have a written number before we touch anything.",
       },
       {
         q: "Won't a pressure washer tear up the wood?",
@@ -306,7 +306,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What does brick house washing cost?",
-        a: "It tracks close to standard house washing: figure $250–$400 for most one-story brick homes, more with a second story or heavy growth. A firm written quote comes first, always.",
+        a: "It tracks close to a standard house wash. Wall area and the number of stories set most of it, and older masonry with soft mortar takes extra care and time. A firm written quote comes first, always.",
       },
       {
         q: "Can pressure washing really damage brick?",
@@ -360,7 +360,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What does gutter cleaning cost in the area?",
-        a: "Most single-story homes around here run $100–$200 for a full clean-out, two-story homes more, and face brightening is an add-on priced by the foot. You get the exact figure in writing up front.",
+        a: "Gutters are among the cheapest work we do, priced by the length of the run and the number of stories. Brightening the outside faces — getting the tiger stripes off — is a separate add-on, and most people bundle both with a house wash to save a trip. You get the exact figure in writing up front.",
       },
       {
         q: "What are the black stripes on my gutters?",
@@ -415,7 +415,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "How much does rust or stain removal cost?",
-        a: "Small spot treatments usually run $75–$150. Bigger areas — like a fully rust-streaked driveway — are priced by the job, often bundled with a driveway cleaning at a better rate. The written quote comes before anything goes down.",
+        a: "A single spot treatment is one of the smallest jobs we take, and it's cheapest bundled into a cleaning you're already having done. A fully rust-streaked driveway or a large stained wall is priced by the job. The written quote comes before anything goes down.",
       },
       {
         q: "Can every stain be removed?",
