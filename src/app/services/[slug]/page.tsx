@@ -111,21 +111,16 @@ export default async function ServicePage({
               ))}
 
               {service.photo && (
-                <figure className="overflow-hidden rounded-xl border border-bedrock/10">
-                  <Image
-                    src={service.photo.src}
-                    alt={service.photo.alt}
-                    width={service.photo.width}
-                    height={service.photo.height}
-                    // This is the LCP element on service pages — never lazy-load it.
-                    priority
-                    sizes="(min-width: 1024px) 42rem, 100vw"
-                    className="w-full object-cover"
-                  />
-                  <figcaption className="bg-limestone px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-widest text-loam">
-                    Actual job · before &amp; after
-                  </figcaption>
-                </figure>
+                <Image
+                  src={service.photo.src}
+                  alt={service.photo.alt}
+                  width={service.photo.width}
+                  height={service.photo.height}
+                  // This is the LCP element on service pages — never lazy-load it.
+                  priority
+                  sizes="(min-width: 1024px) 42rem, 100vw"
+                  className="w-full rounded-xl border border-bedrock/10 object-cover"
+                />
               )}
 
               <h2 className="pt-4 font-display text-2xl font-bold uppercase tracking-wide text-bedrock">

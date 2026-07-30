@@ -55,6 +55,10 @@ export default function HomePage() {
       <section className="hero-gradient relative overflow-hidden text-white">
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:py-20">
           <div>
+            {/* Mascot in a ring, the way his original site framed it. */}
+            <span className="mb-6 inline-flex h-28 w-28 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/30 sm:h-32 sm:w-32">
+              <LogoMark priority sizes="128px" className="h-auto w-20 sm:w-24" />
+            </span>
             <p className="font-display text-sm font-semibold uppercase tracking-widest text-spray">
               Mobile Bay Area · Alabama Gulf Coast
             </p>
@@ -89,26 +93,18 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* Real job photo + the mascot riding the corner, the way his
-              original hero pairs the two. */}
-          <div className="relative justify-self-center md:w-full md:max-w-md">
-            <figure className="overflow-hidden rounded-xl bg-white/10 shadow-2xl ring-1 ring-white/20">
-              <Image
-                src="/before-after-house-washing-brick.jpg"
-                alt="Brick wall of a Mobile home before and after soft washing — green algae on the left, clean white brick on the right"
-                width={900}
-                height={813}
-                priority
-                sizes="(min-width: 768px) 28rem, 100vw"
-                className="w-full object-cover"
-              />
-              <figcaption className="px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-widest text-white/80">
-                Actual job · before &amp; after
-              </figcaption>
-            </figure>
-            {/* Mascot lands on the grimy "before" half — the brand promise,
-                literally. Kept clear of the caption band. */}
-            <LogoMark className="absolute -left-10 -top-10 hidden h-28 w-auto drop-shadow-xl lg:block" />
+          {/* Real before/after from one of Dylan's jobs — the split is
+              self-evident, so it carries no caption. */}
+          <div className="justify-self-center md:w-full md:max-w-md">
+            <Image
+              src="/before-after-house-washing-brick.jpg"
+              alt="Brick wall of a Mobile home before and after soft washing — green algae on the left, clean white brick on the right"
+              width={900}
+              height={813}
+              priority
+              sizes="(min-width: 768px) 28rem, 100vw"
+              className="w-full rounded-xl object-cover shadow-2xl ring-1 ring-white/20"
+            />
           </div>
         </div>
       </section>

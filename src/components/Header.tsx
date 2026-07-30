@@ -24,9 +24,12 @@ const nav = [
 export function LogoMark({
   className = "",
   priority = false,
+  sizes = "72px",
 }: {
   className?: string;
   priority?: boolean;
+  /** Match the rendered width, or Next serves too small a source and it blurs. */
+  sizes?: string;
 }) {
   return (
     <Image
@@ -36,7 +39,7 @@ export function LogoMark({
       width={815}
       height={560}
       priority={priority}
-      sizes="72px"
+      sizes={sizes}
       className={className}
     />
   );
