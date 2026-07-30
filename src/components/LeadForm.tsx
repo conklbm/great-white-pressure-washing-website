@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { siteConfig } from "@/config/site";
 import { services } from "@/content/services";
 import { towns } from "@/content/towns";
 import { trackEvent } from "@/lib/analytics";
@@ -126,9 +127,18 @@ export function LeadForm({ defaultService }: { defaultService?: string }) {
         />
       </div>
 
+      {/* The one path where a lead can be lost, so give them the number
+          right here rather than making them go hunt for it. */}
       {status === "error" && (
         <p role="alert" className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-800">
-          Couldn&apos;t send your request — call us instead and we&apos;ll take care of you.
+          Couldn&apos;t send your request. Call or text{" "}
+          <a
+            href={`tel:${siteConfig.phone.e164}`}
+            className="font-semibold underline"
+          >
+            {siteConfig.phone.display}
+          </a>{" "}
+          and we&apos;ll take care of you.
         </p>
       )}
 

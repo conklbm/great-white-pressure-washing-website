@@ -88,8 +88,9 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* Real before/after from one of Dylan's jobs, with the logo badge
-              sitting under it like a seal on the proof. */}
+          {/* Real before/after from one of Dylan's jobs.
+              A circular logo badge used to sit under this — dropping in a new
+              one is an <Image> here plus the file in public/. */}
           <div className="justify-self-center md:w-full md:max-w-md">
             <figure className="overflow-hidden rounded-xl bg-white/10 shadow-2xl ring-1 ring-white/20">
               <Image
@@ -105,15 +106,6 @@ export default function HomePage() {
                 Before &amp; After
               </figcaption>
             </figure>
-            <Image
-              src="/logo-badge.png"
-              alt=""
-              aria-hidden="true"
-              width={800}
-              height={800}
-              sizes="160px"
-              className="mx-auto mt-8 h-32 w-32 rounded-full ring-2 ring-white/40 sm:h-36 sm:w-36"
-            />
           </div>
         </div>
       </section>

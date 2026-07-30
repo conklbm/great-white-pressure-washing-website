@@ -28,7 +28,7 @@ const CONFIG = {
   // Inbox that receives lead notifications. ASK THE SITE OWNER for this per
   // site — do NOT reuse another site's address. Leave '' to skip email and
   // only log to the Sheet.
-  NOTIFY_EMAIL: '',
+  NOTIFY_EMAIL: 'dylan@greatwhitepressurewashing.com',
 
   // Shown in email subjects/bodies so multi-site inboxes stay sortable.
   SITE_LABEL: 'Great White Pressure Washing',

@@ -20,8 +20,11 @@ are the highest-impact items on this list.
       `scripts/leads-apps-script.gs` — logs each lead to a Google Sheet AND
       emails a notification.
       1. New Google Sheet → Extensions → Apps Script → paste the script.
-      2. In `CONFIG`, set `NOTIFY_EMAIL` to whichever inbox should get lead
-         alerts (Dylan's — it stays out of this repo on purpose).
+      2. `CONFIG.NOTIFY_EMAIL` is already set to
+         `dylan@greatwhitepressurewashing.com`. **That mailbox has to
+         actually exist and be monitored before launch** — if the domain has
+         no email hosting yet, point it at a Gmail address instead, or leads
+         will bounce into nowhere.
       3. Deploy → Web app (Execute as: Me, Access: Anyone) → copy the URL.
       4. Set it as the `LEAD_WEBHOOK_URL` env var in Vercel (Production) → redeploy.
       Then test END-TO-END: submit the form on the LIVE deploy and confirm the
