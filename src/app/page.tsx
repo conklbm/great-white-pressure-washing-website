@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import { Cta } from "@/components/Cta";
 import { Faq } from "@/components/Faq";
-import { LogoMark } from "@/components/Header";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, siteConfig } from "@/config/site";
 import { services } from "@/content/services";
@@ -55,10 +54,6 @@ export default function HomePage() {
       <section className="hero-gradient relative overflow-hidden text-white">
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:py-20">
           <div>
-            {/* Mascot in a ring, the way his original site framed it. */}
-            <span className="mb-6 inline-flex h-28 w-28 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/30 sm:h-32 sm:w-32">
-              <LogoMark priority sizes="128px" className="h-auto w-20 sm:w-24" />
-            </span>
             <p className="font-display text-sm font-semibold uppercase tracking-widest text-spray">
               Mobile Bay Area · Alabama Gulf Coast
             </p>
@@ -93,17 +88,31 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* Real before/after from one of Dylan's jobs — the split is
-              self-evident, so it carries no caption. */}
+          {/* Real before/after from one of Dylan's jobs, with the logo badge
+              sitting under it like a seal on the proof. */}
           <div className="justify-self-center md:w-full md:max-w-md">
+            <figure className="overflow-hidden rounded-xl bg-white/10 shadow-2xl ring-1 ring-white/20">
+              <Image
+                src="/before-after-house-washing-brick.jpg"
+                alt="Brick wall of a Mobile home before and after soft washing — green algae on the left, clean white brick on the right"
+                width={900}
+                height={813}
+                priority
+                sizes="(min-width: 768px) 28rem, 100vw"
+                className="w-full object-cover"
+              />
+              <figcaption className="px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-widest text-white/85">
+                Before &amp; After
+              </figcaption>
+            </figure>
             <Image
-              src="/before-after-house-washing-brick.jpg"
-              alt="Brick wall of a Mobile home before and after soft washing — green algae on the left, clean white brick on the right"
-              width={900}
-              height={813}
-              priority
-              sizes="(min-width: 768px) 28rem, 100vw"
-              className="w-full rounded-xl object-cover shadow-2xl ring-1 ring-white/20"
+              src="/logo-badge.png"
+              alt=""
+              aria-hidden="true"
+              width={800}
+              height={800}
+              sizes="160px"
+              className="mx-auto mt-8 h-32 w-32 rounded-full ring-2 ring-white/40 sm:h-36 sm:w-36"
             />
           </div>
         </div>

@@ -37,7 +37,7 @@ export function LogoMark({
       alt=""
       aria-hidden="true"
       width={815}
-      height={560}
+      height={546}
       priority={priority}
       sizes={sizes}
       className={className}
