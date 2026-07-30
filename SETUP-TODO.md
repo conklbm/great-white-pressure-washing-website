@@ -53,16 +53,29 @@ are the highest-impact items on this list.
 
 ## High-impact now (real business = real levers)
 
-- [ ] **Google Business Profile — do this early.** Dylan has a real
-      service-area business, so a GBP is fully legitimate (and it's where most
-      local calls come from):
-      - Create/claim as a **service-area business** (hide address — no
-        storefront needed; never use a PO box/UPS store).
-      - Name: "Great White Pressure Washing", phone: (251) 454-6704 —
-        byte-identical to the site and schema.
-      - Primary category: Pressure Washing Service; secondary: Cleaning Service.
-      - Service area: the 11 towns on this site (Mobile → Orange Beach).
-      - Add photos, hours, and services once verified.
+- [x] **Google Business Profile — it exists.**
+      <https://maps.app.goo.gl/dRNk4c31rrZh5mxB6>. It's linked from the site's
+      `LocalBusiness` JSON-LD via `sameAs` (`src/config/site.ts` → `social`),
+      which is how Google ties this domain to that listing. Remaining work
+      inside the GBP dashboard:
+      - [ ] **Confirm the phone is exactly (251) 454-6704** — it must match
+            the site and schema character for character. (I could not read it
+            programmatically; Maps doesn't serve it in HTML.) Same for the
+            business name, which already matches.
+      - [ ] Confirm it's set up as a **service-area business** with the
+            address hidden — the listing looks like one, and the site's
+            schema deliberately emits no `streetAddress` to match. If a
+            street address is ever shown there, add it to `siteConfig.address`
+            so the two don't disagree.
+      - [ ] Primary category **Pressure Washing Service**; add Cleaning
+            Service as secondary.
+      - [ ] Set the service area to the 11 towns this site covers
+            (Mobile → Orange Beach).
+      - [ ] Upload the job photos and set hours.
+      - [ ] Grab the **review request link** from the dashboard ("Ask for
+            reviews") — it's a `g.page/r/…` URL. Save it here; it's what
+            Dylan texts customers, and it's what the future reviews section
+            will link to.
 - [ ] **More job photos from Dylan.** Four real before/afters are already in
       (pulled off his live site): brick soft wash — used in the hero and on
       house washing — plus a driveway and a construction-site washdown.

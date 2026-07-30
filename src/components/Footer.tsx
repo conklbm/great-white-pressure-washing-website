@@ -32,14 +32,9 @@ export function Footer() {
               </p>
             ) : null}
             <div className="mt-4 flex gap-4 text-sm">
-              {Object.entries(siteConfig.social).map(([network, href]) => (
-                <a
-                  key={network}
-                  href={href}
-                  rel="noopener"
-                  className="capitalize hover:text-white"
-                >
-                  {network}
+              {siteConfig.social.map(({ label, href }) => (
+                <a key={label} href={href} rel="noopener" className="hover:text-white">
+                  {label}
                 </a>
               ))}
             </div>

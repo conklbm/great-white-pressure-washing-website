@@ -53,10 +53,16 @@ export const siteConfig = {
   searchConsoleVerification: "", // TODO: content of google-site-verification meta tag
   leadWebhookUrl: "", // TODO: Apps Script Web App URL → Google Sheet
 
-  social: {
-    facebook: "https://www.facebook.com/profile.php?id=61577197524338",
-    instagram: "https://www.instagram.com/_greatwhitepressurewashing_/",
-  } as Record<string, string>,
+  /**
+   * Public profiles, in footer link order. Every href is also emitted as
+   * LocalBusiness `sameAs` — that's the signal tying this site to the Google
+   * Business Profile, so keep the Google entry first and never drop it.
+   */
+  social: [
+    { label: "Google", href: "https://maps.app.goo.gl/dRNk4c31rrZh5mxB6" },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61584888988593" },
+    { label: "Instagram", href: "https://www.instagram.com/_greatwhitepressurewashing_/" },
+  ] as ReadonlyArray<{ label: string; href: string }>,
 
   // ---- Brand tokens (see globals.css for the CSS side) --------------------
   brand: {

@@ -61,8 +61,8 @@ function localBusinessJsonLd() {
     telephone: siteConfig.phone.e164,
     ...(siteConfig.email ? { email: siteConfig.email } : {}),
     description: siteConfig.description,
-    ...(Object.keys(siteConfig.social).length
-      ? { sameAs: Object.values(siteConfig.social) }
+    ...(siteConfig.social.length
+      ? { sameAs: siteConfig.social.map((s) => s.href) }
       : {}),
     areaServed: towns.map((t) => ({
       "@type": "City",
