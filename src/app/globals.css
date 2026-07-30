@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens EXTRACTED from Dylan's existing site and logo — see the role
+ * map in src/config/site.ts brand.colors. His cartoon shark mascot carries
+ * the identity; these are its own colors (navy wordmark block, wand yellow)
+ * plus the royal blue his live hero gradient runs to.
+ *
+ * Type: Bangers = the brand voice (wordmark + homepage h1 only), Oswald =
+ * every other heading, Inter = body. Matches his live site's font stack.
+ */
+@theme {
+  --color-bedrock: #202080; /* logo navy */
+  --color-spruce: #0057ff; /* royal blue — links/accents */
+  --color-loam: #46536d; /* blue-slate — secondary text */
+  --color-limestone: #eaf4ff; /* pale sky tint — backgrounds */
+  --color-spray: #89bae4; /* logo sky blue — accents on dark */
+  --color-signal: #ffc61e; /* wand yellow — call CTAs only */
+
+  --font-brand: var(--font-bangers), var(--font-oswald), system-ui, sans-serif;
+  --font-display: var(--font-oswald), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-white font-sans text-bedrock antialiased;
+}
+
+/* Bangers ships tight and all-caps; give it room to breathe at display size */
+.font-brand {
+  letter-spacing: 0.02em;
+}
+
+/* His site's hero: a royal-blue field with a lighter diagonal sweep. Kept
+   dark enough end-to-end that white body text stays at AA contrast. */
+.hero-gradient {
+  background-image:
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0) 42%
+    ),
+    linear-gradient(135deg, #0b62ff 0%, #0057ff 45%, #052e9e 100%);
+}
+
+/* visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-spruce);
+  outline-offset: 2px;
+}
