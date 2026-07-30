@@ -42,15 +42,16 @@ are the highest-impact items on this list.
       for the apex (no www) as canonical, matching the current live host.
       After cutover run: `bash ~/.claude/scripts/check-domain.sh greatwhitepressurewashing.com /services/house-soft-washing`
 - [ ] **After the domain is attached, confirm the real host is indexable.**
-      `src/proxy.ts` sends `X-Robots-Tag: noindex, nofollow` on every host
-      that isn't `greatwhitepressurewashing.com`, which is what keeps the
-      `.vercel.app` alias from being indexed as a duplicate site. It switches
-      over automatically — but verify, because a live site stuck on noindex
-      is invisible:
+      `src/proxy.ts` noindexes only known-disposable hosts (`.vercel.app`,
+      localhost, raw IPs …), so the real domain can't be caught by it even if
+      `siteConfig.url` is wrong — but verify anyway, because a live site
+      stuck on noindex is invisible and silent. One command checks both
+      sides plus canonical/sitemap/robots agreement:
       ```bash
-      curl -sI https://greatwhitepressurewashing.com/ | grep -i x-robots-tag   # want NO output
-      curl -sI https://great-white-pressure-washing-websit.vercel.app/ | grep -i x-robots-tag   # want noindex
+      bash ~/.claude/scripts/check-domain.sh greatwhitepressurewashing.com /services/house-soft-washing great-white-pressure-washing-websit.vercel.app
       ```
+      Want: `✓ indexable` for the real domain and `✓ platform host … is
+      noindexed`. Re-run it after any change to `proxy.ts` or the domain.
 - [ ] **Business email (optional but recommended).** `siteConfig.email` is
       empty right now and the site cleanly omits it everywhere. Once Dylan
       has an inbox he wants public (even a Gmail), set it and it appears in
