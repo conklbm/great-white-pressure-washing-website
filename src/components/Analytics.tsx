@@ -3,11 +3,15 @@ import Script from "next/script";
 import { siteConfig } from "@/config/site";
 
 /**
- * GA4 — renders nothing until siteConfig.ga4Id is set (config TODO), so the
- * placeholder never ships a broken request. Non-blocking via next/script.
+ * GA4 — non-blocking via next/script.
+ *
+ * Skipped unless the ID is set AND this is a production build, so local dev
+ * pageviews never land in the property. A brand-new property is a baseline
+ * you'll measure months of real traffic against; seeding it with our own
+ * dev-server hits quietly corrupts that.
  */
 export function Analytics() {
-  if (!siteConfig.ga4Id) return null;
+  if (!siteConfig.ga4Id || process.env.NODE_ENV !== "production") return null;
   return (
     <>
       <Script

@@ -49,7 +49,7 @@ export const siteConfig = {
   hours: null as null | string, // e.g. "Mo-Sa 07:00-19:00" (schema.org format)
 
   // ---- Integrations (all TODO until launch) -------------------------------
-  ga4Id: "", // TODO: GA4 property for this site (loads only when set)
+  ga4Id: "G-QN5PNW3Z2F", // GA4 measurement ID (loads only in production builds)
   searchConsoleVerification: "", // TODO: content of google-site-verification meta tag
   leadWebhookUrl: "", // TODO: Apps Script Web App URL → Google Sheet
 
