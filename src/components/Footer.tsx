@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { services } from "@/content/services";
 import { towns } from "@/content/towns";
+import { ExternalLink } from "./ExternalLink";
 import { LogoMark, Wordmark } from "./Header";
 import { PhoneLink } from "./PhoneLink";
 
@@ -33,9 +34,9 @@ export function Footer() {
             ) : null}
             <div className="mt-4 flex gap-4 text-sm">
               {siteConfig.social.map(({ label, href }) => (
-                <a key={label} href={href} rel="noopener" className="hover:text-white">
+                <ExternalLink key={label} href={href} className="hover:text-white">
                   {label}
-                </a>
+                </ExternalLink>
               ))}
             </div>
           </div>

@@ -1,9 +1,13 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
+import { ExternalLink, isExternalHref } from "@/components/ExternalLink";
+
 /**
  * MDX element styling for blog posts — required by @next/mdx.
- * Internal links go through next/link.
+ * Internal links go through next/link; anything leaving the site is routed
+ * through ExternalLink so it opens in a new tab. Handled here so every post,
+ * including ones written later, gets it without the author remembering.
  */
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,16 +29,26 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     li: (props) => <li className="leading-relaxed" {...props} />,
     strong: (props) => <strong className="font-semibold text-bedrock" {...props} />,
-    a: ({ href = "", children, ...rest }) =>
-      href.startsWith("/") ? (
-        <Link href={href} className="font-medium text-spruce underline" {...rest}>
+    a: ({ href = "", children, ...rest }) => {
+      const className = "font-medium text-spruce underline";
+      if (isExternalHref(href)) {
+        return (
+          <ExternalLink href={href} className={className} {...rest}>
+            {children}
+          </ExternalLink>
+        );
+      }
+      // Internal paths get client-side nav; mailto:/tel:/# stay plain anchors.
+      return href.startsWith("/") ? (
+        <Link href={href} className={className} {...rest}>
           {children}
         </Link>
       ) : (
-        <a href={href} className="font-medium text-spruce underline" {...rest}>
+        <a href={href} className={className} {...rest}>
           {children}
         </a>
-      ),
+      );
+    },
     blockquote: (props) => (
       <blockquote className="mt-4 border-l-4 border-signal pl-4 italic text-loam" {...props} />
     ),
