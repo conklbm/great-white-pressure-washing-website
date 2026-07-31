@@ -16,10 +16,14 @@
 export const siteConfig = {
   siteId: "great-white-pressure-washing",
 
-  // Live domain. Canonical host is the apex (the current live site serves
-  // the bare domain) — keep sitemap/canonical/OG URLs on the apex.
+  // Live domain. Canonical host is **www** — the apex 308-redirects to it.
+  // House standard (CLAUDE.md Phase 6): the DNS spec forbids CNAMEs on apex
+  // domains, so www can be re-steered at the DNS layer where an apex is
+  // pinned to an A record. Every canonical/sitemap/OG URL derives from this,
+  // so it must match whatever the host actually serves — mismatch makes each
+  // canonical point at a redirect.
   name: "Great White Pressure Washing",
-  url: "https://greatwhitepressurewashing.com",
+  url: "https://www.greatwhitepressurewashing.com",
   description:
     "Pressure washing and soft washing across the Mobile Bay Area — houses, roofs, driveways, decks, and commercial exteriors on both shores of the bay. Free estimates.",
 
