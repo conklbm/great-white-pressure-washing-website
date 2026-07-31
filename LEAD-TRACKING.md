@@ -72,6 +72,18 @@ but don't answer. Irrelevant here: we forward to the renter's line anyway.
 - Same pattern: a thin adapter into `forwardLead`, or use its own dashboard
 - Worth it once a renter is paying real money and asks harder questions
 
+## QuoteIQ — where the leads actually get worked
+
+Dylan quotes and invoices in **QuoteIQ** (myquoteiq.com), Beginner plan. As of
+2026-07-30 it exposes **no API, Zapier, or webhooks**, and its embeddable lead
+widgets (InstaQuote / InstaSchedule) are Pro-tier only. So leads land in the
+Sheet and he re-keys them into QuoteIQ by hand — fine at current volume.
+
+If that ever changes, it's still just the webhook: point `LEAD_WEBHOOK_URL` at
+a Make.com scenario that fans out to both the Sheet and QuoteIQ. Keep the Sheet
+either way — a CRM tracks jobs, not marketing attribution, and it won't store
+the `utm_source`/`gclid`/referrer data that tells you which pages earn work.
+
 ## Which to pick
 
 | Situation | Tool |

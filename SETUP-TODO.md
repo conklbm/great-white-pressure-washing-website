@@ -103,10 +103,17 @@ are the highest-impact items on this list.
       on the homepage and About page) is a hunting photo — authentically
       local, but not him working. A shot of him with the equipment or
       mid-job would convert better; keep the hunting one for social.
-- [ ] **Real reviews.** No review section ships (nothing fabricated). Start a
-      review-request routine with every finished job (GBP review link by
-      text). Once a handful of genuine reviews exist, add a reviews section to
-      the homepage + service pages quoting them.
+- [ ] **Real reviews — and he's already paying for the tool to get them.**
+      No review section ships (nothing fabricated), which is the single
+      biggest gap on the site. Reviews drive both the GBP's local ranking and
+      the conversion decision.
+      **Switch on Review Multiplier in QuoteIQ** — automated Google review
+      requests, and it's *included* in his Beginner plan, currently unused.
+      Point it at the `g.page/r/…` link from the GBP task above. That turns
+      review collection into something that happens automatically after every
+      job instead of something Dylan has to remember.
+      Once a handful of genuine reviews exist, add a reviews section to the
+      homepage and service pages quoting them, plus a "leave us a review" CTA.
 - [ ] **Trust specifics.** If/when Dylan is insured, add "Insured" to the hero
       trust list and About page — commercial clients ask for a certificate.
       Never ship it unverified.
@@ -135,6 +142,46 @@ are the highest-impact items on this list.
       15. Commercial storefronts: how often to clean, and what it costs
 - [ ] Consider 1–2 more area pages ONLY with genuinely unique content
       (candidates: Grand Bay, Bay Minette, Loxley, Robertsdale, Dauphin Island).
+
+## QuoteIQ — the software Dylan actually quotes and invoices in
+
+<https://myquoteiq.com> — a home-service CRM (estimates, invoicing,
+scheduling, payments). He's on the **Beginner plan, $74.99/mo**. Researched
+2026-07-30. This is where his work actually happens, so the site should feed
+it, not compete with it.
+
+**No automated path from the site into QuoteIQ on his plan.** Checked: no
+documented API, Zapier, or webhooks at any tier, and the two features that
+would capture leads directly — **InstaQuote** (self-quoting widget you embed
+on your site) and **InstaSchedule** (self-booking) — are **excluded from
+Beginner** and need Pro at $149.99/mo. Also gated: ClientHub texting, and
+Email & Text Automation.
+
+- [ ] **Do nothing about integration for now.** Dylan retypes a name and
+      phone into QuoteIQ when he acts on a lead — roughly 30 seconds, and
+      he's opening it anyway to build the estimate. Against that, Pro costs
+      +$900/yr. At a few leads a week the ROI is clearly negative.
+- [ ] **If you ever do consider Pro / InstaQuote, know the trade:** an
+      embedded third-party widget would replace our form and almost
+      certainly drop the `utm_source`/`gclid`/referrer/landing-page
+      attribution the site captures on every lead. That data is how you learn
+      which town and service pages produce paying work — the whole reason for
+      building 40 pages. Don't trade it away lightly. Revisit only if lead
+      volume makes manual entry genuinely painful.
+- [ ] **Included on Beginner and worth using now:**
+      - **Review Multiplier** — automated Google review requests. See the
+        reviews item above; this is the highest-value unused thing he owns.
+      - **MapMeasure Pro** — satellite property measurement, so he can price
+        driveways and roofs from an address without a visit. Worth knowing
+        the site's "a call, text, or photo prices most jobs same-day" copy is
+        accurate rather than overpromising.
+      - **AI Estimator** (photo → quote), consumer financing (Affirm/Klarna
+        — marginal at $200–$1,000 jobs, may matter on whole-property work).
+- [ ] **Whenever the destination changes**, it's one webhook URL. The lead
+      kernel (`src/lib/leads.ts`) is vendor-neutral by design — if QuoteIQ
+      ships an API, or he upgrades, or leads should fan out to both the Sheet
+      and the CRM, point `LEAD_WEBHOOK_URL` at a Make.com scenario and the
+      site never changes.
 
 ## Later / structural
 
