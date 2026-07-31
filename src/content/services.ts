@@ -68,7 +68,7 @@ export const services: Service[] = [
       heading: "Salt air, shade, and 66 inches of rain",
       body: [
         "Mobile averages about 66 inches of rain a year — more than Seattle — and the humidity between storms never really breaks. That keeps exterior walls damp, and damp walls grow things. If your house sits under live oaks or faces away from the afternoon sun, the green shows up even faster.",
-        "Where you live changes what we're washing off. Close to the bay or down toward Gulf Shores, salt spray leaves a gray film that plain rain never rinses. Older Midtown homes with painted wood and original soffits need a softer touch than the vinyl going up in West Mobile and Baldwin County subdivisions. We match the mix and the pressure to your house, not a one-size setting.",
+        "Where you live changes what we're washing off. Close to the bay, salt in the air leaves a gray film that plain rain never rinses. Older Midtown homes with painted wood and original soffits need a softer touch than the vinyl going up in West Mobile and Baldwin County subdivisions. We match the mix and the pressure to your house, not a one-size setting.",
         "For most homes here, a yearly wash is the sweet spot. It stops the growth before it stains — and keeps HOA letters out of your mailbox.",
       ],
     },
@@ -104,7 +104,7 @@ export const services: Service[] = [
     h1: "Roof Cleaning in Mobile, AL & the Bay Area",
     metaTitle: "Roof Cleaning & Shingle Streak Removal | Mobile AL",
     metaDescription:
-      "Black shingle streaks are algae eating your roof. We kill them with a no-pressure soft wash that's safe for shingles — Mobile down to Gulf Shores. Free quotes.",
+      "Black shingle streaks are algae eating your roof. We kill them with a no-pressure soft wash that's safe for shingles, across Mobile and Baldwin County. Free quotes.",
     card: "Dark shingle streaks killed at the source with a no-pressure soft wash.",
     intro: [
       "The dark stains running down shingles all over Mobile are a bacteria called Gloeocapsa magma. It eats the limestone inside asphalt shingles, spreads roof to roof on the wind, and keeps your shingles damp and hot. The longer it feeds, the more life it takes off the roof.",
@@ -245,7 +245,7 @@ export const services: Service[] = [
     localNote: {
       heading: "What Gulf humidity does to bare wood",
       body: [
-        "Mildew doesn't just sit on wood here — it roots into the grain and feeds on the damp. With our humidity, an unsealed deck can gray out in two summers, and the fence line along the trees grows a full green coat. Rental decks down in Gulf Shores get a double hit: sun on one side, salt air on the other.",
+        "Mildew doesn't just sit on wood here — it roots into the grain and feeds on the damp. With our humidity, an unsealed deck can gray out in two summers, and the fence line along the trees grows a full green coat. Decks on the bay side get a double hit: sun on one face, salt air on the other.",
         "A proper wash is also the cheapest insurance for a stain job. Sealer applied over mildew traps it under the finish, where it lifts and peels within a year. Clean, brightened, fully dry wood is the difference between a stain that lasts and one you redo next spring.",
       ],
     },
@@ -438,7 +438,7 @@ export const services: Service[] = [
     h1: "Commercial & Construction Washing in Mobile, AL & the Bay Area",
     metaTitle: "Commercial & Construction Washing | Mobile Bay AL",
     metaDescription:
-      "Post-construction washdowns, storefronts, and HOA common areas cleaned across Mobile, Baldwin County & the beaches. One-time or on a schedule. Free bids.",
+      "Post-construction washdowns, storefronts, and HOA common areas cleaned across Mobile and Baldwin County. One-time or on a schedule. Free bids.",
     card: "Post-construction washdowns, storefronts, and common areas — on your schedule.",
     intro: [
       "A construction project isn't finished until it's clean. Concrete splatter on new flatwork, red mud on curbs and streets, dust and mortar haze on everything — the last impression a builder leaves is whatever the washdown crew leaves behind. We handle post-construction exterior cleanup so your site photographs like the finished product it is.",
@@ -464,7 +464,7 @@ export const services: Service[] = [
       heading: "A building boom needs washdown crews",
       body: [
         "The Eastern Shore and Baldwin County are among the fastest-growing parts of Alabama, and every new build ends the same way: a site covered in red mud, concrete splash, and construction dust that has to disappear before the punch list closes. A clean washdown is one of the cheapest ways a builder makes the finished product look worth its price.",
-        "Down in Gulf Shores and Orange Beach the pressure is different but constant — salt air films the railings and glass, and vacation-rental turnover means the exterior gets judged in listing photos all year. For storefronts around Mobile, it's the daily grind of gum, spills, and shaded-sidewalk algae. Different properties, same answer: a cleaning schedule that fits how the property actually gets dirty.",
+        "Along the Eastern Shore the pressure is different but constant — bay humidity films the railings and glass, and a waterfront restaurant's patio is judged by every table that sits on it. For storefronts around Mobile, it's the daily grind of gum, spills, and shaded-sidewalk algae. Different properties, same answer: a cleaning schedule that fits how the property actually gets dirty.",
       ],
     },
     faqs: [

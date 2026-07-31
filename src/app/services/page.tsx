@@ -7,7 +7,7 @@ import { services } from "@/content/services";
 export const metadata = pageMetadata({
   title: "Pressure Washing Services — Mobile Bay Area",
   description:
-    "Eight ways we attack grime — soft washing, roofs, concrete, decks, brick, gutters, rust removal, and commercial work across the Mobile Bay Area to Gulf Shores.",
+    "Eight ways we attack grime — soft washing, roofs, concrete, decks, brick, gutters, rust removal, and commercial work across Mobile and Baldwin County.",
   path: "/services",
 });
 

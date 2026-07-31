@@ -18,7 +18,7 @@ export function Footer() {
             </Link>
             <p className="mt-4 text-sm">
               House washing, roof cleaning, and pressure washing across the
-              Mobile Bay Area — from {siteConfig.city} to the beaches.
+              Mobile Bay Area — both shores of the bay.
             </p>
             <PhoneLink
               location="footer"

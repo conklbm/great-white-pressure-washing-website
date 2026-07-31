@@ -83,8 +83,9 @@ are the highest-impact items on this list.
             so the two don't disagree.
       - [ ] Primary category **Pressure Washing Service**; add Cleaning
             Service as secondary.
-      - [ ] Set the service area to the 11 towns this site covers
-            (Mobile → Orange Beach).
+      - [ ] Set the service area to the 9 towns this site covers
+            (Mobile County: Mobile, Tillmans Corner, Theodore, Semmes,
+            Saraland; Baldwin: Daphne, Spanish Fort, Fairhope, Foley).
       - [ ] Upload the job photos and set hours.
       - [ ] Grab the **review request link** from the dashboard ("Ask for
             reviews") — it's a `g.page/r/…` URL. Save it here; it's what

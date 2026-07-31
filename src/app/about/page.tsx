@@ -111,8 +111,7 @@ export default function AboutPage() {
           Where we work
         </h2>
         <p className="mt-3 text-loam">
-          Based in {siteConfig.city}, covering both shores of Mobile Bay and
-          down to the beaches:
+          Based in {siteConfig.city}, covering both shores of Mobile Bay:
         </p>
         <ul className="mt-4 grid gap-2 text-loam sm:grid-cols-2">
           {towns.map((t) => (

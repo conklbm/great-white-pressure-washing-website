@@ -21,7 +21,7 @@ export const siteConfig = {
   name: "Great White Pressure Washing",
   url: "https://greatwhitepressurewashing.com",
   description:
-    "Pressure washing and soft washing across the Mobile Bay Area — houses, roofs, driveways, decks, and commercial exteriors from Mobile to Gulf Shores. Free estimates.",
+    "Pressure washing and soft washing across the Mobile Bay Area — houses, roofs, driveways, decks, and commercial exteriors on both shores of the bay. Free estimates.",
 
   city: "Mobile",
   state: "AL",

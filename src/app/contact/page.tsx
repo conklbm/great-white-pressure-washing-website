@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Free Pressure Washing Estimate — Mobile Bay Area",
   description:
-    "Call or text Great White Pressure Washing for a free estimate anywhere in the Mobile Bay Area — house, roof, driveway, and commercial cleaning from Mobile to Gulf Shores.",
+    "Call or text Great White Pressure Washing for a free estimate anywhere in the Mobile Bay Area — house, roof, driveway, and commercial cleaning on both shores of the bay.",
   path: "/contact",
 });
 
@@ -56,7 +56,7 @@ export default function ContactPage() {
               Service area
             </h2>
             <p className="mt-2 text-sm text-loam">
-              Both shores of Mobile Bay, down to the beaches:
+              Both shores of Mobile Bay:
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {towns.map((t) => (

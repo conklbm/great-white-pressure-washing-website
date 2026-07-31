@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     absolute: `Pressure Washing Mobile AL | ${siteConfig.name}`,
   },
   description:
-    "Great White Pressure Washing attacks grime across the Mobile Bay Area — houses, roofs, driveways, and commercial jobs from Mobile to Gulf Shores. Free estimates.",
+    "Great White Pressure Washing attacks grime across the Mobile Bay Area — houses, roofs, driveways, and commercial jobs on both shores of the bay. Free estimates.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     title: `Pressure Washing Mobile AL | ${siteConfig.name}`,
     description:
-      "House washing, roof cleaning, and pressure washing across the Mobile Bay Area — Mobile to Gulf Shores. Free estimates.",
+      "House washing, roof cleaning, and pressure washing across the Mobile Bay Area — both shores of the bay. Free estimates.",
     url: absoluteUrl("/"),
     siteName: siteConfig.name,
     type: "website",
@@ -43,7 +43,7 @@ const homeFaqs = [
   },
   {
     q: "How far do you travel?",
-    a: "Everywhere around Mobile Bay: Mobile, Tillmans Corner, Theodore, Semmes, and Saraland on the west side; Daphne, Spanish Fort, and Fairhope on the Eastern Shore; and down through Foley to Gulf Shores and Orange Beach. Close but not on the list? Reach out anyway.",
+    a: "Both sides of Mobile Bay: Mobile, Tillmans Corner, Theodore, Semmes, and Saraland on the west side, and Daphne, Spanish Fort, Fairhope, and Foley on the Eastern Shore. Close but not on the list? Reach out anyway.",
   },
 ];
 
@@ -63,9 +63,9 @@ export default function HomePage() {
               the grime.
             </h1>
             <p className="mt-5 max-w-md text-lg text-white/85">
-              House washing, roof cleaning, and pressure washing from Mobile
-              to Gulf Shores — with a free estimate and one written price
-              before any work starts.
+              House washing, roof cleaning, and pressure washing on both
+              shores of Mobile Bay — with a free estimate and one written
+              price before any work starts.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink
@@ -84,7 +84,7 @@ export default function HomePage() {
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/75">
               <li>✓ Free estimates</li>
               <li>✓ Owner on every job</li>
-              <li>✓ Mobile to the beaches</li>
+              <li>✓ Both sides of the bay</li>
             </ul>
           </div>
 

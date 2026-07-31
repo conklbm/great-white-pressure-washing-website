@@ -62,7 +62,7 @@ export default async function OgImage() {
             Houses · Roofs · Concrete · Commercial
           </div>
           <div style={{ fontSize: 28, color: "rgba(255,255,255,0.7)", marginTop: 8 }}>
-            Mobile Bay to the beaches
+            Both shores of Mobile Bay
           </div>
           <div
             style={{

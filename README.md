@@ -2,7 +2,7 @@
 
 Rebuild of Dylan's real pressure-washing business site
 (`greatwhitepressurewashing.com`) on the rank-and-rent site architecture —
-Mobile Bay Area, AL, from Mobile to Gulf Shores/Orange Beach. Next.js
+Mobile Bay Area, AL — both shores of the bay, Mobile and Baldwin County. Next.js
 (App Router) + Tailwind v4 + MDX, all-SSG, deploys to Vercel.
 
 Unlike the sister rank-and-rent sites, the "renter" here is permanent:

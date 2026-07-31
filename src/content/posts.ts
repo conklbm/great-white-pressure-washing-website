@@ -10,7 +10,7 @@ import RustStains, {
 } from "../../content/blog/how-to-remove-rust-stains-concrete.mdx";
 import SaltAir, {
   meta as saltAirMeta,
-} from "../../content/blog/salt-air-home-exterior-gulf-shores.mdx";
+} from "../../content/blog/salt-air-home-exterior-mobile-bay.mdx";
 import GrayFence, {
   meta as grayFenceMeta,
 } from "../../content/blog/why-your-fence-turned-gray.mdx";
