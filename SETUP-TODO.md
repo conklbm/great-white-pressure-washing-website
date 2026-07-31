@@ -11,37 +11,39 @@ are the highest-impact items on this list.
 
 ---
 
-## Before launch
+## Before launch — DONE (site is live)
 
-- [ ] **Deploy to Vercel** (new project from the GitHub repo). Verify the
-      preview URL end-to-end before touching DNS — the current one-pager
-      stays live until cutover.
-- [ ] **Lead webhook (where the estimate form goes).** Ready-to-paste script:
-      `scripts/leads-apps-script.gs` — logs each lead to a Google Sheet AND
-      emails a notification.
-      1. New Google Sheet → Extensions → Apps Script → paste the script.
-      2. `CONFIG.NOTIFY_EMAIL` is already set to
-         `dylan@greatwhitepressurewashing.com`. **That mailbox has to
-         actually exist and be monitored before launch** — if the domain has
-         no email hosting yet, point it at a Gmail address instead, or leads
-         will bounce into nowhere.
-      3. Deploy → Web app (Execute as: Me, Access: Anyone) → copy the URL.
-      4. Set it as the `LEAD_WEBHOOK_URL` env var in Vercel (Production) → redeploy.
-      Then test END-TO-END: submit the form on the LIVE deploy and confirm the
-      row lands in the Sheet AND the email arrives. A `200` from `/api/lead`
-      alone does NOT prove delivery.
-- [ ] **GA4.** Create the property, set `siteConfig.ga4Id`. Events already
-      wired: `phone_click` (with placement) and `form_submit`. Mark both as
-      key events in GA4.
-- [ ] **Search Console.** Add the property, put the verification token in
-      `siteConfig.searchConsoleVerification`, deploy, verify, then
-      **submit `/sitemap.xml`**.
-- [ ] **Point the domain at Vercel.** `greatwhitepressurewashing.com` already
-      exists and serves the old one-pager — find where it's registered/hosted,
-      add the domain to the Vercel project, and update DNS. The site is built
-      for the apex (no www) as canonical, matching the current live host.
-      After cutover run: `bash ~/.claude/scripts/check-domain.sh greatwhitepressurewashing.com /services/house-soft-washing`
-- [ ] **After the domain is attached, confirm the real host is indexable.**
+- [x] **Deployed to Vercel**, repo `conklbm/great-white-pressure-washing-website`.
+- [x] **Lead webhook live and verified end-to-end 2026-07-30.** Apps Script →
+      Google Sheet + email, notifying both Dylan and Brooks. Two marked test
+      leads confirmed: row written, email delivered, and the attribution
+      columns (`source`, `gclid`, `landingPage`) carried through intact.
+      **Delete the two `TEST LEAD` rows** when convenient.
+      Editing the script later: change the code, save, then
+      **Deploy → Manage deployments → pencil → Version: New version → Deploy.**
+      Saving alone never updates the live `/exec` URL — it runs a frozen
+      snapshot. Editing the deployment in place keeps the same URL, so Vercel
+      never needs touching again.
+- [x] **GA4** — `G-QN5PNW3Z2F`, live on all pages, production builds only so
+      local dev traffic stays out of the property.
+      - [ ] Mark `phone_click` and `form_submit` as key events in the GA4 UI.
+            Both already fire; `phone_click` carries a placement parameter
+            (header / hero / sticky bar / per-town / per-service).
+- [x] **Search Console** — verified as a **Domain property** via DNS TXT, so
+      it covers apex + www + subdomains and needs no code change.
+      - [ ] **Submit `/sitemap.xml`.** This was deliberately held until the
+            canonical direction was fixed; it's now safe.
+- [x] **Domain live on Vercel**, canonical is **www** with the apex
+      308-redirecting to it. Audit passes clean: canonical, sitemap, and
+      robots all agree, the site is indexable, and the `.vercel.app` alias
+      serves nothing. Re-run any time:
+      ```bash
+      bash ~/.claude/scripts/check-domain.sh greatwhitepressurewashing.com /services/house-soft-washing great-white-pressure-washing-websit.vercel.app
+      ```
+
+## Still open
+
+- [ ] **Confirm the real host stays indexable.**
       `src/proxy.ts` noindexes only known-disposable hosts (`.vercel.app`,
       localhost, raw IPs …), so the real domain can't be caught by it even if
       `siteConfig.url` is wrong — but verify anyway, because a live site
@@ -52,10 +54,14 @@ are the highest-impact items on this list.
       ```
       Want: `✓ indexable` for the real domain and `✓ platform host … is
       noindexed`. Re-run it after any change to `proxy.ts` or the domain.
-- [ ] **Business email (optional but recommended).** `siteConfig.email` is
-      empty right now and the site cleanly omits it everywhere. Once Dylan
-      has an inbox he wants public (even a Gmail), set it and it appears in
-      the footer, contact page, legal pages, and schema.
+- [ ] **Publish the business email?** `siteConfig.email` is empty, so the site
+      cleanly omits it everywhere. `dylan@greatwhitepressurewashing.com` is a
+      live Google Workspace mailbox (confirmed via MX), so it *works* — the
+      only question is whether to show it publicly. Setting it adds the
+      address to the footer, contact page, legal pages, and schema.
+- [ ] **Add an SPF record** for the domain. It has none. Doesn't affect
+      *receiving* (so lead notifications are unaffected), but it will hurt
+      deliverability of mail Dylan *sends* customers from that address.
 - [ ] **Confirm the pricing envelope with Dylan.** Exactly ONE place on the
       site quotes numbers: the homepage FAQ, which says most jobs start
       around $200 and run to $1,000+ depending on size and complexity
