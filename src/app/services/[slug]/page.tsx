@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BeforeAfterGallery } from "@/components/BeforeAfterGallery";
 import { Cta } from "@/components/Cta";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { SprayDivider } from "@/components/SprayDivider";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, siteConfig } from "@/config/site";
+import { getGallery } from "@/content/galleries";
 import { getService, services } from "@/content/services";
 import { towns } from "@/content/towns";
 import { pageMetadata } from "@/lib/seo";
@@ -45,6 +47,7 @@ export default async function ServicePage({
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  const gallery = getGallery(slug);
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -127,6 +130,10 @@ export default async function ServicePage({
                   </figcaption>
                 </figure>
               )}
+
+              {/* Where there's no lead photo above, the gallery's first image
+                  becomes this page's LCP and must not lazy-load. */}
+              <BeforeAfterGallery pairs={gallery} priority={!service.photo} />
 
               <h2 className="pt-4 font-display text-2xl font-bold uppercase tracking-wide text-bedrock">
                 {service.includedHeading}
