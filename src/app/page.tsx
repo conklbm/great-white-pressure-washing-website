@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { BeforeAfterGallery } from "@/components/BeforeAfterGallery";
 import { Cta } from "@/components/Cta";
 import { Faq } from "@/components/Faq";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, siteConfig } from "@/config/site";
+import { homepagePairs } from "@/content/galleries";
 import { services } from "@/content/services";
 import { towns } from "@/content/towns";
 
@@ -88,24 +90,19 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {/* Real before/after from one of Dylan's jobs.
-              A circular logo badge used to sit under this — dropping in a new
-              one is an <Image> here plus the file in public/. */}
-          <div className="justify-self-center md:w-full md:max-w-md">
-            <figure className="overflow-hidden rounded-xl bg-white/10 shadow-2xl ring-1 ring-white/20">
-              <Image
-                src="/before-after-house-washing-brick.jpg"
-                alt="Brick wall of a Mobile home before and after soft washing — green algae on the left, clean white brick on the right"
-                width={900}
-                height={813}
-                priority
-                sizes="(min-width: 768px) 28rem, 100vw"
-                className="w-full object-cover"
-              />
-              <figcaption className="px-4 py-2.5 text-center text-xs font-semibold uppercase tracking-widest text-white/85">
-                Before &amp; After
-              </figcaption>
-            </figure>
+          {/* Every real before/after we have, most dramatic first. The heading
+              is dropped here — in a 28rem column it would crowd the controls,
+              and the BEFORE/AFTER badges already say what this is. */}
+          {/* justify-self only from md up: on mobile it makes this grid item
+              size to its content, which lets the 13-card track win and blow
+              the column past the viewport. */}
+          <div className="min-w-0 md:w-full md:max-w-md md:justify-self-center">
+            <BeforeAfterGallery
+              pairs={homepagePairs}
+              priority
+              tone="dark"
+              heading={null}
+            />
           </div>
         </div>
       </section>

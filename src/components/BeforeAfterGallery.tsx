@@ -23,11 +23,27 @@ const GAP = 16; // must match the `gap-4` below — the step math depends on it
 export function BeforeAfterGallery({
   pairs,
   priority = false,
+  tone = "light",
+  heading = "Real jobs, before & after",
 }: {
   pairs: GalleryPair[];
   /** true when this is the page's first image (its LCP) */
   priority?: boolean;
+  /** "dark" for placement on the navy/blue hero */
+  tone?: "light" | "dark";
+  /** null drops the heading — use in tight columns where it would crowd the controls */
+  heading?: string | null;
 }) {
+  const dark = tone === "dark";
+  const t = {
+    heading: dark ? "text-white" : "text-bedrock",
+    counter: dark ? "text-white/70" : "text-loam",
+    button: dark
+      ? "border-white/30 text-white hover:bg-white/10"
+      : "border-bedrock/20 text-bedrock hover:bg-limestone",
+    caption: dark ? "text-white/80" : "text-loam",
+    frame: dark ? "bg-white/10" : "bg-limestone",
+  };
   const scroller = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
 
@@ -69,20 +85,29 @@ export function BeforeAfterGallery({
   const many = pairs.length > 1;
 
   return (
-    <section aria-label="Before and after photos" className="not-prose">
+    // min-w-0 is load-bearing: as a flex/grid child this would otherwise size
+    // to the min-content of a 13-card track and blow the column out to ~1000px.
+    <section aria-label="Before and after photos" className="not-prose min-w-0">
       {/* On narrow screens the controls get their own row — squeezed beside
-          the heading it wraps to three cramped lines. */}
-      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-bedrock">
-          Real jobs, before &amp; after
-        </h2>
+          the heading it wraps to three cramped lines. With no heading the row
+          is just the controls, right-aligned. */}
+      <div
+        className={`mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 ${
+          heading ? "sm:justify-between" : "sm:justify-end"
+        }`}
+      >
+        {heading && (
+          <h2 className={`font-display text-2xl font-bold uppercase tracking-wide ${t.heading}`}>
+            {heading}
+          </h2>
+        )}
         {many && (
           <div className="flex shrink-0 items-center gap-2 self-end sm:self-auto">
             {/* Only one pair is visible, so the count is the only cue that
                 there are others. */}
             <span
               aria-live="polite"
-              className="font-display text-sm font-semibold tabular-nums text-loam"
+              className={`font-display text-sm font-semibold tabular-nums ${t.counter}`}
             >
               {index + 1} / {pairs.length}
             </span>
@@ -91,7 +116,7 @@ export function BeforeAfterGallery({
               onClick={() => goTo(index - 1)}
               disabled={index === 0}
               aria-label="Previous before and after"
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-lg text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
+              className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border text-lg transition-colors disabled:cursor-not-allowed disabled:opacity-35 ${t.button}`}
             >
               <span aria-hidden="true">←</span>
             </button>
@@ -100,7 +125,7 @@ export function BeforeAfterGallery({
               onClick={() => goTo(index + 1)}
               disabled={index === pairs.length - 1}
               aria-label="Next before and after"
-              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-lg text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
+              className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border text-lg transition-colors disabled:cursor-not-allowed disabled:opacity-35 ${t.button}`}
             >
               <span aria-hidden="true">→</span>
             </button>
@@ -120,7 +145,7 @@ export function BeforeAfterGallery({
                 {(["before", "after"] as const).map((side) => (
                   <div
                     key={side}
-                    className="relative aspect-[3/4] overflow-hidden rounded-lg bg-limestone"
+                    className={`relative aspect-[3/4] overflow-hidden rounded-lg ${t.frame}`}
                   >
                     <Image
                       src={`/gallery/${p.base}-${side}.jpg`}
@@ -140,7 +165,7 @@ export function BeforeAfterGallery({
                   </div>
                 ))}
               </div>
-              <figcaption className="mt-3 text-sm leading-snug text-loam">
+              <figcaption className={`mt-3 text-sm leading-snug ${t.caption}`}>
                 {p.caption}
               </figcaption>
             </figure>

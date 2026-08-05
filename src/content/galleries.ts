@@ -129,3 +129,33 @@ export const galleries: Record<string, GalleryPair[]> = {
 export function getGallery(slug: string): GalleryPair[] {
   return galleries[slug] ?? [];
 }
+
+/**
+ * Every pair, for the homepage — ordered by how obvious the difference is at a
+ * glance, not by service. Someone swiping the hero gives it a few seconds, so
+ * the most dramatic transformations go first and the subtler ones (pool deck,
+ * pipe detail) sit further back where a genuinely interested viewer finds them.
+ */
+const HOMEPAGE_ORDER = [
+  "commercial-pressure-washing-1",
+  "roof-cleaning-1",
+  "deck-fence-cleaning-1",
+  "house-soft-washing-1",
+  "deck-fence-cleaning-3",
+  "brick-masonry-cleaning-1",
+  "roof-cleaning-2",
+  "driveway-concrete-cleaning-1",
+  "brick-masonry-cleaning-2",
+  "house-soft-washing-2",
+  "rust-stain-removal-1",
+  "driveway-concrete-cleaning-2",
+  "deck-fence-cleaning-2",
+];
+
+export const homepagePairs: GalleryPair[] = HOMEPAGE_ORDER.map((base) => {
+  const found = Object.values(galleries)
+    .flat()
+    .find((p) => p.base === base);
+  if (!found) throw new Error(`HOMEPAGE_ORDER references unknown pair "${base}"`);
+  return found;
+});
