@@ -31,12 +31,12 @@ export const galleries: Record<string, GalleryPair[]> = {
       base: "roof-cleaning-1",
       caption: "Asphalt shingle roof — black algae streaking killed and rinsed away",
       beforeAlt: "Asphalt shingle roof covered in dark black algae streaks before soft washing",
-      afterAlt: "The same shingle roof after soft washing, streaks gone and shingles an even colour",
+      afterAlt: "The same shingle roof after soft washing, streaks gone and shingles an even color",
     },
     {
       base: "roof-cleaning-2",
-      caption: "Clay tile roof — years of dulling growth removed, colour back",
-      beforeAlt: "Clay tile roof looking dull and grey-toned from algae growth before cleaning",
+      caption: "Clay tile roof — years of dulling growth removed, color back",
+      beforeAlt: "Clay tile roof looking dull and gray-toned from algae growth before cleaning",
       afterAlt: "The same clay tile roof after cleaning, tiles back to a bright terracotta",
     },
   ],
@@ -51,13 +51,13 @@ export const galleries: Record<string, GalleryPair[]> = {
     {
       base: "deck-fence-cleaning-2",
       caption: "Deck boards and grill station",
-      beforeAlt: "Weathered grey deck boards and a wooden grill table before cleaning",
-      afterAlt: "The same deck after cleaning, wood colour restored",
+      beforeAlt: "Weathered gray deck boards and a wooden grill table before cleaning",
+      afterAlt: "The same deck after cleaning, wood color restored",
     },
     {
       base: "deck-fence-cleaning-3",
       caption: "Louvered privacy screen — painted wood, cleaned without stripping",
-      beforeAlt: "Louvered wooden privacy screen greyed and dirty before cleaning",
+      beforeAlt: "Louvered wooden privacy screen grayed and dirty before cleaning",
       afterAlt: "The same louvered screen after cleaning, paint bright and intact",
     },
   ],
@@ -67,7 +67,7 @@ export const galleries: Record<string, GalleryPair[]> = {
       base: "brick-masonry-cleaning-1",
       caption: "Herringbone brick walkway — moss and algae lifted out of the joints",
       beforeAlt: "Brick walkway covered in green moss and algae before cleaning",
-      afterAlt: "The same herringbone brick walkway after cleaning, brick colour and pattern visible",
+      afterAlt: "The same herringbone brick walkway after cleaning, brick color and pattern visible",
     },
     {
       base: "brick-masonry-cleaning-2",
@@ -96,8 +96,8 @@ export const galleries: Record<string, GalleryPair[]> = {
     {
       base: "driveway-concrete-cleaning-1",
       caption: "Paver driveway and entry walk — surface cleaned edge to edge",
-      beforeAlt: "Paver driveway looking grey and dull with organic staining before cleaning",
-      afterAlt: "The same paver driveway after cleaning, colour even and bright",
+      beforeAlt: "Paver driveway looking gray and dull with organic staining before cleaning",
+      afterAlt: "The same paver driveway after cleaning, color even and bright",
     },
     {
       base: "driveway-concrete-cleaning-2",

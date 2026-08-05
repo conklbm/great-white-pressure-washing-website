@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { GalleryPair } from "@/content/galleries";
 
-const GAP = 16; // must match the `gap-4` below — the step maths depends on it
+const GAP = 16; // must match the `gap-4` below — the step math depends on it
 
 /**
  * Before/after gallery — one pair at a time, stepped with the arrows.
@@ -14,7 +14,7 @@ const GAP = 16; // must match the `gap-4` below — the step maths depends on it
  * touch users keep native momentum swipe and the whole thing degrades to a
  * plain scroller if JS never runs. The scrollbar is hidden and each card is
  * exactly the track's width, so nothing half-shows — the arrows and the
- * counter are the affordance instead of a peeking neighbour.
+ * counter are the affordance instead of a peeking neighbor.
  *
  * Deliberately NOT a drag-to-reveal slider: that needs both frames shot from
  * the identical spot, and these are real job photos taken from wherever Dylan
@@ -54,7 +54,7 @@ export function BeforeAfterGallery({
     const el = scroller.current;
     if (!el) return;
     const target = Math.max(0, Math.min(pairs.length - 1, n));
-    // Honour reduced-motion the way globals.css does everywhere else.
+    // Honor reduced-motion the way globals.css does everywhere else.
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
