@@ -51,3 +51,8 @@ rank-and-rent-strategy.md
 
 # local screenshot/debug artifacts
 .playwright-mcp/
+
+# Raw camera drops. Source HEICs aren't web-servable and shouldn't ship —
+# the converted, paired JPEGs in public/gallery/ are what the site uses.
+# Keep originals here locally; they just don't belong in the repo.
+public/dylan - before and after photos/

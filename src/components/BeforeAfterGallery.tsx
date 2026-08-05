@@ -5,17 +5,20 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { GalleryPair } from "@/content/galleries";
 
+const GAP = 16; // must match the `gap-4` below — the step maths depends on it
+
 /**
- * Swipeable before/after gallery.
+ * Before/after gallery — one pair at a time, stepped with the arrows.
  *
- * Built on CSS scroll-snap rather than a carousel library: native momentum
- * swipe on touch, no dependency, and it still works if JS never runs — the
- * arrows are a desktop nicety layered on top, not the mechanism.
+ * Still a CSS scroll-snap track underneath rather than a carousel library, so
+ * touch users keep native momentum swipe and the whole thing degrades to a
+ * plain scroller if JS never runs. The scrollbar is hidden and each card is
+ * exactly the track's width, so nothing half-shows — the arrows and the
+ * counter are the affordance instead of a peeking neighbour.
  *
- * Deliberately NOT a drag-to-reveal slider. That effect needs both shots
- * framed from the identical spot; these are real job photos taken from
- * wherever Dylan was standing, so a reveal would just look broken. Side by
- * side is honest about what the pair actually is.
+ * Deliberately NOT a drag-to-reveal slider: that needs both frames shot from
+ * the identical spot, and these are real job photos taken from wherever Dylan
+ * was standing.
  */
 export function BeforeAfterGallery({
   pairs,
@@ -26,20 +29,19 @@ export function BeforeAfterGallery({
   priority?: boolean;
 }) {
   const scroller = useRef<HTMLUListElement>(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
+  const [index, setIndex] = useState(0);
 
   const sync = useCallback(() => {
     const el = scroller.current;
     if (!el) return;
-    setAtStart(el.scrollLeft < 8);
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8);
+    const step = el.clientWidth + GAP;
+    setIndex(step > 0 ? Math.round(el.scrollLeft / step) : 0);
   }, []);
 
   useEffect(() => {
-    sync();
     const el = scroller.current;
     if (!el) return;
+    sync();
     el.addEventListener("scroll", sync, { passive: true });
     window.addEventListener("resize", sync);
     return () => {
@@ -48,17 +50,19 @@ export function BeforeAfterGallery({
     };
   }, [sync]);
 
-  const nudge = (dir: 1 | -1) => {
+  const goTo = (n: number) => {
     const el = scroller.current;
     if (!el) return;
-    const card = el.querySelector("li");
-    const step = card ? card.clientWidth + 16 : el.clientWidth * 0.9;
-    // Honour reduced-motion the way globals.css does everywhere else —
-    // an animated horizontal jump is exactly what those users opt out of.
+    const target = Math.max(0, Math.min(pairs.length - 1, n));
+    // Honour reduced-motion the way globals.css does everywhere else.
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    el.scrollBy({ left: dir * step, behavior: reduced ? "auto" : "smooth" });
+    el.scrollTo({
+      left: target * (el.clientWidth + GAP),
+      behavior: reduced ? "auto" : "smooth",
+    });
+    setIndex(target); // optimistic, so the counter never lags the tap
   };
 
   if (pairs.length === 0) return null;
@@ -66,27 +70,37 @@ export function BeforeAfterGallery({
 
   return (
     <section aria-label="Before and after photos" className="not-prose">
-      <div className="mb-3 flex items-end justify-between gap-4">
+      {/* On narrow screens the controls get their own row — squeezed beside
+          the heading it wraps to three cramped lines. */}
+      <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-bedrock">
           Real jobs, before &amp; after
         </h2>
         {many && (
-          <div className="hidden shrink-0 gap-2 sm:flex">
+          <div className="flex shrink-0 items-center gap-2 self-end sm:self-auto">
+            {/* Only one pair is visible, so the count is the only cue that
+                there are others. */}
+            <span
+              aria-live="polite"
+              className="font-display text-sm font-semibold tabular-nums text-loam"
+            >
+              {index + 1} / {pairs.length}
+            </span>
             <button
               type="button"
-              onClick={() => nudge(-1)}
-              disabled={atStart}
-              aria-label="Previous photo"
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
+              onClick={() => goTo(index - 1)}
+              disabled={index === 0}
+              aria-label="Previous before and after"
+              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-lg text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
             >
               <span aria-hidden="true">←</span>
             </button>
             <button
               type="button"
-              onClick={() => nudge(1)}
-              disabled={atEnd}
-              aria-label="Next photo"
-              className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
+              onClick={() => goTo(index + 1)}
+              disabled={index === pairs.length - 1}
+              aria-label="Next before and after"
+              className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-bedrock/20 text-lg text-bedrock transition-colors hover:bg-limestone disabled:cursor-not-allowed disabled:opacity-35"
             >
               <span aria-hidden="true">→</span>
             </button>
@@ -96,19 +110,13 @@ export function BeforeAfterGallery({
 
       <ul
         ref={scroller}
-        // tabIndex makes the scroller keyboard-scrollable for anyone not using
-        // the arrow buttons; -mx/px pairing lets cards bleed to the edge on
-        // mobile so the next one peeks and the row reads as swipeable.
         tabIndex={0}
-        className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:thin] sm:mx-0 sm:px-0"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {pairs.map((p, i) => (
-          <li
-            key={p.base}
-            className="w-[85%] shrink-0 snap-start sm:w-[420px] lg:w-[460px]"
-          >
+          <li key={p.base} className="w-full shrink-0 snap-start">
             <figure>
-              <div className="grid grid-cols-2 gap-1.5">
+              <div className="grid grid-cols-2 gap-2">
                 {(["before", "after"] as const).map((side) => (
                   <div
                     key={side}
@@ -118,12 +126,12 @@ export function BeforeAfterGallery({
                       src={`/gallery/${p.base}-${side}.jpg`}
                       alt={side === "before" ? p.beforeAlt : p.afterAlt}
                       fill
-                      sizes="(min-width: 1024px) 230px, (min-width: 640px) 210px, 43vw"
+                      sizes="(min-width: 1024px) 360px, (min-width: 640px) 320px, 46vw"
                       priority={priority && i === 0}
                       className="object-cover"
                     />
                     <span
-                      className={`absolute left-0 top-0 px-2 py-1 font-display text-[11px] font-bold uppercase tracking-widest text-white ${
+                      className={`absolute left-0 top-0 px-2.5 py-1 font-display text-xs font-bold uppercase tracking-widest text-white ${
                         side === "before" ? "bg-bedrock/85" : "bg-spruce/90"
                       }`}
                     >
@@ -132,19 +140,13 @@ export function BeforeAfterGallery({
                   </div>
                 ))}
               </div>
-              <figcaption className="mt-2.5 text-sm leading-snug text-loam">
+              <figcaption className="mt-3 text-sm leading-snug text-loam">
                 {p.caption}
               </figcaption>
             </figure>
           </li>
         ))}
       </ul>
-
-      {many && (
-        <p className="mt-1 text-xs text-loam/70 sm:hidden">
-          Swipe to see more →
-        </p>
-      )}
     </section>
   );
 }
